@@ -6,18 +6,26 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import { ThemeProvider } from "./theme";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ServiceProvider } from "../common/providers/service-provider";
+import { services } from "./service";
 
-import { theme, ThemeProvider } from "./theme";
-import { styled } from "@mui/styles";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 export const App = () => {
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
-        <AppRouter />
+        <ServiceProvider services={services}>
+          <AppRouter />
+        </ServiceProvider>
       </QueryClientProvider>
     </ThemeProvider>
   );
