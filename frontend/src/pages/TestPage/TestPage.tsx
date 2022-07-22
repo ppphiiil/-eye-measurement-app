@@ -7,7 +7,6 @@ export const TestPage = () => {
     <>
       <div>{"TestPage"}</div>
       <Link to="/home">
-        {" "}
         <Button variant="contained">{"Link"}</Button>
       </Link>
     </>

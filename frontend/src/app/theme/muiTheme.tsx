@@ -1,4 +1,5 @@
 import { ThemeProvider as Provider, createTheme } from "@mui/material/styles";
+import React from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -13,5 +14,5 @@ const theme = createTheme({
 });
 
 export const ThemeProvider = ({ children }: Props) => {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <Provider theme={theme}>{children}</Provider>;
 };
